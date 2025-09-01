@@ -36,57 +36,61 @@ export default function Home() {
   }
 
   return (
-    <main className="min-h-screen bg-gray-50 flex items-center justify-center">
-      <div className="max-w-2xl w-full bg-white p-6 rounded-xl shadow">
-        <h1 className="text-2xl font-bold mb-4 text-black">
-          Freelancer Proposal Generator
-        </h1>
+    <main className="min-h-screen bg-gray-50 flex items-center justify-center px-4">
+      <div className="max-w-2xl w-full bg-white p-8 rounded-2xl shadow-lg border border-gray-200">
+        {/* Header */}
+        <div className="text-center mb-6">
+          <h1 className="text-3xl font-extrabold text-black">Win Clients</h1>
+          <p className="text-gray-600 mt-1">Freelancer Proposal Generator</p>
+        </div>
 
+        {/* Form */}
         <form onSubmit={handleSubmit} className="space-y-4">
           <input
             type="text"
             placeholder="Service (e.g. Web design)"
-            className="w-full border rounded p-2 text-black"
+            className="w-full border border-gray-300 rounded-lg p-3 focus:ring-2 focus:ring-black focus:outline-none text-black"
             value={service}
             onChange={(e) => setService(e.target.value)}
           />
           <textarea
             placeholder="Paste job description here"
-            className="w-full border rounded p-2 h-24 text-black"
+            className="w-full border border-gray-300 rounded-lg p-3 h-28 focus:ring-2 focus:ring-black focus:outline-none text-black"
             value={jobDescription}
             onChange={(e) => setJobDescription(e.target.value)}
           />
           <input
             type="text"
             placeholder="Your name"
-            className="w-full border rounded p-2 text-black"
+            className="w-full border border-gray-300 rounded-lg p-3 focus:ring-2 focus:ring-black focus:outline-none text-black"
             value={freelancerName}
             onChange={(e) => setFreelancerName(e.target.value)}
           />
           <input
             type="text"
             placeholder="Your experience (e.g. 3 years in Shopify)"
-            className="w-full border rounded p-2 text-black"
+            className="w-full border border-gray-300 rounded-lg p-3 focus:ring-2 focus:ring-black focus:outline-none text-black"
             value={experience}
             onChange={(e) => setExperience(e.target.value)}
           />
           <button
             type="submit"
-            className="w-full bg-black text-white rounded p-2"
+            className="w-full bg-black text-white font-medium rounded-lg p-3 hover:bg-gray-800 transition disabled:opacity-50"
             disabled={loading}
           >
             {loading ? "Generating..." : "Generate Proposal"}
           </button>
         </form>
 
+        {/* Proposal Output */}
         {proposal && (
-          <div className="mt-6">
-            <h2 className="text-lg font-semibold mb-2 text-black">
-              Generated Proposal:
+          <div className="mt-8">
+            <h2 className="text-xl font-semibold mb-3 text-black">
+              Generated Proposal
             </h2>
-            <pre className="whitespace-pre-wrap bg-gray-100 p-3 rounded text-black">
+            <div className="bg-gray-100 border border-gray-300 p-4 rounded-lg text-black whitespace-pre-wrap">
               {proposal}
-            </pre>
+            </div>
           </div>
         )}
       </div>
